@@ -8,36 +8,17 @@ public class Mastermindthesecond {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int i = 0;
+        HelperMM Helper = new HelperMM();
+        
+    	int i = 0;
         int y = 0;
         boolean won = false;
         int black = 0;
         int turns = 0;
         
         String[] secret = new String[4];
-        String[] colors = new String[6];
-
-        colors[0] = "Red";
-        colors[1] = "Blue";
-        colors[2] = "Green";
-        colors[3] = "Purple";
-        colors[4] = "Orange";
-        colors[5] = "Yellow";
         
-        System.out.println("                  _                      _           _  ");
-        System.out.println("  /\\/\\   __ _ ___| |_ ___ _ __ _ __ ___ (_)_ __   __| |");
-        System.out.println(" /    \\ / _` / __| __/ _ \\ '__| '_ ` _ \\| | '_ \\ / _` |");
-        System.out.println("/ /\\/\\ \\ (_| \\__ \\ ||  __/ |  | | | | | | | | | | (_| |");
-        System.out.println("\\/    \\/\\__,_|___/\\__\\___|_|  |_| |_| |_|_|_| |_|\\__,_|");
-        System.out.println("");
-        System.out.println("You can choose between the colors: red, blue, green, purple,");
-        System.out.println("orange, yellow, pink, cyan and brown.");
-        System.out.println("Black = Correct color on correct position.");
-        System.out.println("White = Correct color on incorrect position.");
-        System.out.println("Gray = Incorrect color on incorrect position.");
-        System.out.println("");
-        System.out.println("Player VS Player or Computer VS Player?");
-        System.out.println("Answer with 'Player' or 'Computer':");
+        Helper.intro(); //Intro Screen, including ASCII Art and info.
         
         String answer1 = input.nextLine();
         if (answer1.equalsIgnoreCase("Computer") || answer1.equalsIgnoreCase("Player")) {
@@ -50,7 +31,7 @@ public class Mastermindthesecond {
                 if (answer2.equalsIgnoreCase("y")) {
                     for (i = 0; i <= 3; i++) {
                         int rng = random.nextInt(6);
-                        String color = colors[rng];
+                        String color = Helper.colorInfo()[rng];
                         secret[i] = color;
                         System.out.println(secret[i]);
                     }
@@ -59,7 +40,7 @@ public class Mastermindthesecond {
                 else if (answer2.equalsIgnoreCase("n")) {
                 	for (i = 0; i <= 3; i++) {
                     int rng = random.nextInt(6);
-                    String color = colors[rng];
+                    String color = Helper.colorInfo()[rng];
                     secret[i] = color;
                 }
                 }
@@ -67,7 +48,7 @@ public class Mastermindthesecond {
                
                 else for (i = 0; i <= 3; i++) {
                     int rng = random.nextInt(6);
-                    String color = colors[rng];
+                    String color = Helper.colorInfo()[rng];
                     secret[i] = color;
                 }
                 for (turns = 1; turns <= 10; turns++) {
@@ -163,5 +144,6 @@ public class Mastermindthesecond {
         } else {
             System.out.println("Wrong form of input, try again.");
         }
-      }  
-    }
+      }
+	}  
+    
