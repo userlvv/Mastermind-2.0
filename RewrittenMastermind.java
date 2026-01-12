@@ -10,6 +10,7 @@ public class RewrittenMastermind {
         HelperMM Helper = new HelperMM();
         int i = 0;
         int turns = 0;
+        boolean won = false;
         String[] secret = new String[4];
         String[] guess = new String[4];
         Helper.intro();
@@ -23,9 +24,9 @@ public class RewrittenMastermind {
         if (answer1.equalsIgnoreCase("Computer")) {
             System.out.println("Computer VS Player selected.");
             System.out.println("Debug Mode? Y/N");
-            String answer2 = input.nextLine();
-
+        
 //Debug Mode on or off ======     
+            String answer2 = input.nextLine();
          if (answer2.equalsIgnoreCase("y")) {
         	 for (i = 0; i < 4; i++) {  
         		 int rng = random.nextInt(9);
@@ -43,6 +44,7 @@ public class RewrittenMastermind {
                 System.out.println("Wrong form of input, try again.");
                 input.close();
             }
+        
 //Ten Turns + Code Input ======
          for (turns = 1; turns <= 10; turns++) {
          	System.out.println("Round: " + turns); 
@@ -51,11 +53,24 @@ public class RewrittenMastermind {
              guess[i] = HelperMM.readValidColor(input);
          }
 //Code Checker (Needs to go to HelperMM) ======      
-         HelperMM.codeChecker(secret, guess); 
+         won = HelperMM.codeChecker(secret, guess); 
+         if (won) {
+         	System.out.println("You have won! Restart for next round.");
+         	input.close();
+         	break;
          }
-             boolean won = HelperMM.codeChecker(secret, guess); 
-        } 
-//Player Selected ======
+         else if (turns == 10) {
+             System.out.println("You have lost! Restart for next round.");
+             System.out.println("The code was:");
+             for (i = 0; i < 4; i++) {
+             System.out.println(secret[i]);
+             input.close();
+             }
+             }
+         }
+        }
+    
+// !! Player Selected ======
         else if (answer1.equalsIgnoreCase("Player")) {
             System.out.println("Player VS Player selected.");
             System.out.println("The Code Maker can create the code by putting in the code. Don't let the Code Cracker see!");
@@ -65,29 +80,31 @@ public class RewrittenMastermind {
                 secret[i] = HelperMM.readValidColor(input);
             }
             HelperMM.emptyText();
-        }
+        
 //Ten Turns + Code Input ======
         for (turns = 1; turns <= 10; turns++) {
         	System.out.println("Round: " + turns); 
-        System.out.println("Choose 4 colors, 1 at a time:");
+        	System.out.println("Choose 4 colors, 1 at a time:");
         for (i = 0; i < 4; i++) {
             guess[i] = HelperMM.readValidColor(input);
         }
 //Code Checker (Needs to go to HelperMM) ======        
-        HelperMM.codeChecker(secret, guess); 
-        }
-            boolean won = HelperMM.codeChecker(secret, guess); 
-        
+            won = HelperMM.codeChecker(secret, guess); 
             if (won) {
             	System.out.println("You have won! Restart for next round.");
-                input.close();
+            	input.close();
+            	break;
             }
-                else {
-                    System.out.println("You have lost! Restart for next round.");
-                    System.out.println("The code was:");
-                    for ( i = 0; i < 4; i++) {
-                    System.out.println(secret[i]);
-                    }
+            else if (turns == 10) {
+                System.out.println("You have lost! Restart for next round.");
+                System.out.println("The code was:");
+                for (i = 0; i < 4; i++) {
+                System.out.println(secret[i]);
+                input.close();
+                
                 }
+            }
+        }          
+    }
     }
 }

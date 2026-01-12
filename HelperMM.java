@@ -32,10 +32,9 @@ public class HelperMM {
         colors[6] = "Pink";
         colors[7] = "Cyan";
         colors[8] = "Brown";
-        
 		return colors;
 	}
-	public static String[] codeGeneratorDebug() {
+	public static String[] codeGeneratorDebug() {//code Gen + Show
 	    String[] secret = new String[4];
 	    for (int i = 0; i < 4; i++) {
 	        int rng = random.nextInt(9);
@@ -44,7 +43,7 @@ public class HelperMM {
 	        }
 	    return secret;
 	}
-	public static String[] codeGeneratorNoDebug() {
+	public static String[] codeGeneratorNoDebug() {//code Gen - Show
 		String[] secret = new String[4];
 	    for (int i = 0; i < 4; i++) {
 	        int rng = random.nextInt(9);
@@ -65,8 +64,8 @@ public class HelperMM {
 	}	
 	public static String readValidColor(Scanner input) {//Gets colors and outputs result
 		String colors;
-			while (true) {
-			colors = input.nextLine();
+		while (true) {//infin loop
+			colors = input.nextLine(); 
 				if (inputCheck(colors)) {
 					return colors;
 			        }
@@ -76,18 +75,15 @@ public class HelperMM {
 	public static void emptyText() {//Empty text for PvP
 	for (int skip = 0; skip < 50; skip++) {
 	    System.out.println("");
-	    
-		
 	}
 	}
 	public static boolean codeChecker(String[] secret, String[] guess) {
 		 int black = 0;
 		 int y = 0;
 		 int i = 0;
+		 boolean won;
 	for (i = 0; i < 4; i++) {
-       
     	String feedback;
-
         feedback = "Gray";
         if (secret[i].equalsIgnoreCase(guess[i])) {
             feedback = "Black";
@@ -96,11 +92,11 @@ public class HelperMM {
             for (y = 0; y < 4; y++) {
                 if (secret[i].equalsIgnoreCase(guess[y]) && y != i) {
                     feedback = "White";
+                    
                 }
                 }
             }
     System.out.println(feedback);
-	
 }
 	return black == 4;
 	}
