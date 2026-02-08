@@ -3,7 +3,6 @@ package mastermindthesecond;
 import java.util.*;
 
 public class RewrittenMastermind {
-    private static Random random = new Random();
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -15,12 +14,14 @@ public class RewrittenMastermind {
         String[] guess = new String[4];
         Helper.intro();
 
+      
+        while (true) {
         String answer1 = input.nextLine();
-        if (!answer1.equalsIgnoreCase("Computer") && !answer1.equalsIgnoreCase("Player")) {
-            System.out.println("Wrong form of input, try again.");
-            input.close();
+        if (answer1.equalsIgnoreCase("Computer") || answer1.equalsIgnoreCase("Player")) {
+            break;
         }
-//Computer Selected ======
+        
+//!! Computer Selected ======
 		if (answer1.equalsIgnoreCase("Computer")) {
             System.out.println("Computer VS Player selected.");
             System.out.println("Debug Mode? Y/N");
@@ -36,8 +37,8 @@ public class RewrittenMastermind {
           else if (answer2.equalsIgnoreCase("n")) {
         	  secret = Helper.codeGenerator();
             } else {
-                System.out.println("Wrong form of input, try again.");
-                input.close();
+                    System.out.println("Answer can only contain 'y' or 'n'!");
+                    answer2 = input.nextLine();
             }
         
 //Ten Turns + Code Input ======
@@ -47,7 +48,7 @@ public class RewrittenMastermind {
          for (i = 0; i < 4; i++) {
              guess[i] = Helper.readValidColor(input);
          }
-//Code Checker (Needs to go to HelperMM) ======      
+//Code Checker ======      
          won = Helper.codeChecker(secret, guess); 
          if (won) {
          	System.out.println("You have won! Restart for next round.");
@@ -83,7 +84,7 @@ public class RewrittenMastermind {
         for (i = 0; i < 4; i++) {
             guess[i] = Helper.readValidColor(input);
         }
-//Code Checker (Needs to go to HelperMM) ======        
+//Code Checker ======        
             won = Helper.codeChecker(secret, guess); 
             if (won) {
             	System.out.println("You have won! Restart for next round.");
@@ -100,6 +101,9 @@ public class RewrittenMastermind {
                 }
             }
         }          
+    } else {
+    	System.out.println("Answer can only contain 'Player' or 'Computer'!");
+    }
     }
     }
 }

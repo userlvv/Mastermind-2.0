@@ -5,12 +5,8 @@ import java.util.*;
 public class HelperMM {
 	private static Random random = new Random();
 	public void intro() {
-		System.out.println("                  _                      _           _  ");
-        System.out.println("  /\\/\\   __ _ ___| |_ ___ _ __ _ __ ___ (_)_ __   __| |");
-        System.out.println(" /    \\ / _` / __| __/ _ \\ '__| '_ ` _ \\| | '_ \\ / _` |");
-        System.out.println("/ /\\/\\ \\ (_| \\__ \\ ||  __/ |  | | | | | | | | | | (_| |");
-        System.out.println("\\/    \\/\\__,_|___/\\__\\___|_|  |_| |_| |_|_|_| |_|\\__,_|");
-        System.out.println("");
+		System.out.println("== Welcome to Mastermind 2.o ==");
+		System.out.println("");
         System.out.println("You can choose between the colors: red, blue, green, purple,");
         System.out.println("orange, yellow, pink, cyan and brown.");
         System.out.println("Black = Correct color on correct position.");
