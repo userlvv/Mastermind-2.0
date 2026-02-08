@@ -21,25 +21,20 @@ public class RewrittenMastermind {
             input.close();
         }
 //Computer Selected ======
-        if (answer1.equalsIgnoreCase("Computer")) {
+		if (answer1.equalsIgnoreCase("Computer")) {
             System.out.println("Computer VS Player selected.");
             System.out.println("Debug Mode? Y/N");
         
-//Debug Mode on or off ======     
+//Debug Mode on or off ======
             String answer2 = input.nextLine();
          if (answer2.equalsIgnoreCase("y")) {
-        	 for (i = 0; i < 4; i++) {  
-        		 int rng = random.nextInt(9);
-        		 String color = Helper.colorInfo()[rng];
-        		 secret[i] = color;
+        	 secret = Helper.codeGeneratorDebug();
+        	 for (i = 0; i < secret.length; i++) {
         		 System.out.println(secret[i]);
+        	 }
             }
-         } else if (answer2.equalsIgnoreCase("n")) {
-        	 for (i = 0; i < 4; i++) {
-        		 int rng = random.nextInt(9);
-        		 String color = Helper.colorInfo()[rng];
-        		 secret[i] = color;
-                }
+          else if (answer2.equalsIgnoreCase("n")) {
+        	  secret = Helper.codeGeneratorDebug();
             } else {
                 System.out.println("Wrong form of input, try again.");
                 input.close();
