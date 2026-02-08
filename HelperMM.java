@@ -33,7 +33,7 @@ public class HelperMM {
         colors[8] = "Brown";
 		return colors;
 	}
-	public String[] codeGeneratorDebug() {//code Gen w/ Show
+	public String[] codeGenerator() {//code Gen w/ Show
 	    HelperMM Helper = new HelperMM();
 	    String[] secret = new String[4];
 	    for (int i = 0; i < secret.length; i++) {
@@ -43,16 +43,6 @@ public class HelperMM {
 	        }
 	    return secret;
 	}
-	public String[] codeGeneratorNoDebug() {//code Gen w/o Show
-	    HelperMM Helper = new HelperMM();
-		String[] secret = new String[4];
-	    for (int i = 0; i < secret.length; i++) {
-	        int rng = random.nextInt(9);
-	        String color = Helper.colorInfo()[rng];
-	        secret[i] = color; 
-	        }
-	    return secret;
-	}		
 	public boolean inputColCheck(String input) {//Checks input with all colors
 		String[] colors = colorInfo(); 
 			for (int i = 0; i < colors.length; i++) { 

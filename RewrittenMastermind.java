@@ -28,13 +28,13 @@ public class RewrittenMastermind {
 //Debug Mode on or off ======
             String answer2 = input.nextLine();
          if (answer2.equalsIgnoreCase("y")) {
-        	 secret = Helper.codeGeneratorDebug();
+        	 secret = Helper.codeGenerator();
         	 for (i = 0; i < secret.length; i++) {
         		 System.out.println(secret[i]);
         	 }
             }
           else if (answer2.equalsIgnoreCase("n")) {
-        	  secret = Helper.codeGeneratorDebug();
+        	  secret = Helper.codeGenerator();
             } else {
                 System.out.println("Wrong form of input, try again.");
                 input.close();
