@@ -7,10 +7,10 @@ public class RewrittenMastermind {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        HelperMM Helper = new HelperMM();
         int i = 0;
         int turns = 0;
         boolean won = false;
+        HelperMM Helper = new HelperMM();
         String[] secret = new String[4];
         String[] guess = new String[4];
         Helper.intro();
@@ -30,14 +30,14 @@ public class RewrittenMastermind {
          if (answer2.equalsIgnoreCase("y")) {
         	 for (i = 0; i < 4; i++) {  
         		 int rng = random.nextInt(9);
-        		 String color = HelperMM.colorInfo()[rng];
+        		 String color = Helper.colorInfo()[rng];
         		 secret[i] = color;
         		 System.out.println(secret[i]);
             }
          } else if (answer2.equalsIgnoreCase("n")) {
         	 for (i = 0; i < 4; i++) {
         		 int rng = random.nextInt(9);
-        		 String color = HelperMM.colorInfo()[rng];
+        		 String color = Helper.colorInfo()[rng];
         		 secret[i] = color;
                 }
             } else {
@@ -50,10 +50,10 @@ public class RewrittenMastermind {
          	System.out.println("Round: " + turns); 
          System.out.println("Choose 4 colors, 1 at a time:");
          for (i = 0; i < 4; i++) {
-             guess[i] = HelperMM.readValidColor(input);
+             guess[i] = Helper.readValidColor(input);
          }
 //Code Checker (Needs to go to HelperMM) ======      
-         won = HelperMM.codeChecker(secret, guess); 
+         won = Helper.codeChecker(secret, guess); 
          if (won) {
          	System.out.println("You have won! Restart for next round.");
          	input.close();
@@ -77,19 +77,19 @@ public class RewrittenMastermind {
             System.out.println("You can choose between the colors: red, blue, green, purple, orange and yellow");
             
             for (i = 0; i < 4; i++) {
-                secret[i] = HelperMM.readValidColor(input);
+                secret[i] = Helper.readValidColor(input);
             }
-            HelperMM.emptyText();
+            Helper.emptyText();
         
 //Ten Turns + Code Input ======
         for (turns = 1; turns <= 10; turns++) {
         	System.out.println("Round: " + turns); 
         	System.out.println("Choose 4 colors, 1 at a time:");
         for (i = 0; i < 4; i++) {
-            guess[i] = HelperMM.readValidColor(input);
+            guess[i] = Helper.readValidColor(input);
         }
 //Code Checker (Needs to go to HelperMM) ======        
-            won = HelperMM.codeChecker(secret, guess); 
+            won = Helper.codeChecker(secret, guess); 
             if (won) {
             	System.out.println("You have won! Restart for next round.");
             	input.close();
